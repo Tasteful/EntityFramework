@@ -270,7 +270,7 @@ namespace Microsoft.Data.Entity.Metadata.Internal
         {
             if (BaseType != null)
             {
-                throw new InvalidOperationException(CoreStrings.DerivedEntityTypeKey(Name));
+                throw new InvalidOperationException(CoreStrings.DerivedEntityTypeKey(DisplayName(), _baseType.DisplayName()));
             }
 
             if (_primaryKey != null)
@@ -353,7 +353,7 @@ namespace Microsoft.Data.Entity.Metadata.Internal
 
             if (BaseType != null)
             {
-                throw new InvalidOperationException(CoreStrings.DerivedEntityTypeKey(Name));
+                throw new InvalidOperationException(CoreStrings.DerivedEntityTypeKey(DisplayName(), _baseType.DisplayName()));
             }
 
             foreach (var property in properties)

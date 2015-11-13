@@ -781,11 +781,11 @@ namespace Microsoft.Data.Entity.Internal
         }
 
         /// <summary>
-        /// The derived type '{derivedType}' cannot have keys other than those declared on the root type.
+        /// The derived type '{derivedType}' cannot have keys other than those declared on the root type '{rootType}'.
         /// </summary>
-        public static string DerivedEntityTypeKey([CanBeNull] object derivedType)
+        public static string DerivedEntityTypeKey([CanBeNull] object derivedType, [CanBeNull] object rootType)
         {
-            return string.Format(CultureInfo.CurrentCulture, GetString("DerivedEntityTypeKey", "derivedType"), derivedType);
+            return string.Format(CultureInfo.CurrentCulture, GetString("DerivedEntityTypeKey", "derivedType", "rootType"), derivedType, rootType);
         }
 
         /// <summary>
@@ -1116,6 +1116,41 @@ namespace Microsoft.Data.Entity.Internal
             return string.Format(CultureInfo.CurrentCulture, GetString("EntityTypeInUse", "entityType"), entityType);
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// The entity type '{entityType}' was not found. Ensure that the entity type has been added to the model.
+        /// </summary>
+        public static string EntityTypeNotFound([CanBeNull] object entityType)
+        {
+            return string.Format(CultureInfo.CurrentCulture, GetString("EntityTypeNotFound", "entityType"), entityType);
+        }
+
+        /// <summary>
+        /// Unhandled operation: MemberInitExpression binding is not a MemberAssignment
+        /// </summary>
+        public static string InvalidMemberInitBinding
+        {
+            get { return GetString("InvalidMemberInitBinding"); }
+        }
+
+        /// <summary>
+        /// Unhandled expression type: {expressionType}
+        /// </summary>
+        public static string UnhandledExpressionType([CanBeNull] object expressionType)
+        {
+            return string.Format(CultureInfo.CurrentCulture, GetString("UnhandledExpressionType", "expressionType"), expressionType);
+        }
+
+        /// <summary>
+        /// Unhandled node type: {nodeType}
+        /// </summary>
+        public static string UnhandledNodeType([CanBeNull] object nodeType)
+        {
+            return string.Format(CultureInfo.CurrentCulture, GetString("UnhandledNodeType", "nodeType"), nodeType);
+        }
+
+>>>>>>> f1db3b8... :bug: object is not a valid navigation
         private static string GetString(string name, params string[] formatterNames)
         {
             var value = _resourceManager.GetString(name);
