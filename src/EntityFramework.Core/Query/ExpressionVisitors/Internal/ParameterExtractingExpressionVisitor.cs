@@ -99,6 +99,12 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors.Internal
 
                         var parameterValue = ExpressionEvaluationHelpers.Evaluate(e, out parameterName);
 
+                        var parameterExpression = parameterValue as Expression;
+                        if (parameterExpression != null)
+                        {
+                            return parameterExpression;
+                        }
+
                         if (parameterName == null)
                         {
                             parameterName = "p";
