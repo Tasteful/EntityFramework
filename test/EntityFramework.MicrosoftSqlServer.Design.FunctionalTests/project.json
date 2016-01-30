@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "EntityFramework.Commands": "7.0.0-rc1-final",
-    "EntityFramework.Relational": "7.0.0-rc1-final",
-    "EntityFramework.Relational.Design": "7.0.0-rc1-final",
-    "EntityFramework.Relational.Design.FunctionalTests": "7.0.0-rc1-final",
-    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
-    "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final",
+    "EntityFramework.Commands": "7.0.0-rc1-final-l01",
+    "EntityFramework.Relational": "7.0.0-rc1-final-l01",
+    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l01",
+    "EntityFramework.Relational.Design.FunctionalTests": "7.0.0-rc1-final-l01",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final-l01",
+    "EntityFramework.MicrosoftSqlServer.Design": "7.0.0-rc1-final-l01",
     "EntityFramework.MicrosoftSqlServer.FunctionalTests": "1.0.0"
   },
   "commands": {

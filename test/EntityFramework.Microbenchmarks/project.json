@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final-l01",
     "EntityFramework.Microbenchmarks.Core": "1.0.0-*",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final"
   },

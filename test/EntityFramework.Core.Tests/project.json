@@ -3,8 +3,8 @@
     "keyFile": "../../tools/Key.snk"
   },
   "dependencies": {
-    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final",
-    "EntityFramework.InMemory": "7.0.0-rc1-final",
+    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l01",
+    "EntityFramework.InMemory": "7.0.0-rc1-final-l01",
     "Moq": "4.2.1312.1622",
     "xunit.assert": "2.1.0-*",
     "xunit.extensibility.execution": "2.1.0-*"

@@ -1,11 +1,11 @@
 {
-  "version": "7.0.0-rc1-final",
+  "version": "7.0.0-rc1-final-l01",
   "description": "Reusable EntityFramework.Relational.Design functional tests for provider writers.",
   "dependencies": {
     "System.Collections.Immutable": "1.1.38-beta-23516",
-    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final",
-    "EntityFramework.Commands": "7.0.0-rc1-final",
-    "EntityFramework.Relational.Design": "7.0.0-rc1-final",
+    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l01",
+    "EntityFramework.Commands": "7.0.0-rc1-final-l01",
+    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l01",
     "Microsoft.Dnx.Compilation.CSharp.Abstractions": "1.0.0-rc1-final"
   },
   "commands": {

@@ -6,9 +6,9 @@
     ]
   },
   "dependencies": {
-    "EntityFramework.Commands": "7.0.0-rc1-final",
-    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final",
-    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+    "EntityFramework.Commands": "7.0.0-rc1-final-l01",
+    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l01",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final-l01",
     "Microsoft.Dnx.Compilation.CSharp.Abstractions": "1.0.0-rc1-final",
     "System.Collections.Immutable": "1.1.38-beta-23516",
     "xunit.assert": "2.1.0-*",
