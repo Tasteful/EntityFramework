@@ -741,14 +741,6 @@ namespace Microsoft.Data.Entity.Internal
         }
 
         /// <summary>
-        /// Unhandled expression type: '{type}'.
-        /// </summary>
-        public static string UnhandledExpressionType([CanBeNull] object type)
-        {
-            return string.Format(CultureInfo.CurrentCulture, GetString("UnhandledExpressionType", "type"), type);
-        }
-
-        /// <summary>
         /// The key {key} on entity type '{entityType}' contains properties in shadow state - {shadowProperties} and it is referenced by the foreign key {foreignKey} from entity type '{referencingEntityType}'."
         /// </summary>
         public static string ReferencedShadowKey([CanBeNull] object key, [CanBeNull] object entityType, [CanBeNull] object shadowProperties, [CanBeNull] object foreignKey, [CanBeNull] object referencingEntityType)
@@ -1116,8 +1108,6 @@ namespace Microsoft.Data.Entity.Internal
             return string.Format(CultureInfo.CurrentCulture, GetString("EntityTypeInUse", "entityType"), entityType);
         }
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// The entity type '{entityType}' was not found. Ensure that the entity type has been added to the model.
         /// </summary>
@@ -1150,7 +1140,6 @@ namespace Microsoft.Data.Entity.Internal
             return string.Format(CultureInfo.CurrentCulture, GetString("UnhandledNodeType", "nodeType"), nodeType);
         }
 
->>>>>>> f1db3b8... :bug: object is not a valid navigation
         private static string GetString(string name, params string[] formatterNames)
         {
             var value = _resourceManager.GetString(name);
