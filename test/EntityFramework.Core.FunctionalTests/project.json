@@ -1,11 +1,11 @@
 {
-  "version": "7.0.0-rc1-final-l01",
+  "version": "7.0.0-rc1-final-l02",
   "description": "Reusable EntityFramework.Core functional tests for provider writers.",
   "compilationOptions": {
     "keyFile": "../../tools/Key.snk"
   },
   "dependencies": {
-    "EntityFramework.InMemory": "7.0.0-rc1-final-l01",
+    "EntityFramework.InMemory": "7.0.0-rc1-final-l02",
     "xunit.assert": "2.1.0-*",
     "xunit.extensibility.execution": "2.1.0-*"
   },

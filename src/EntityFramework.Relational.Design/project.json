@@ -1,5 +1,5 @@
 {
-  "version": "7.0.0-rc1-final-l01",
+  "version": "7.0.0-rc1-final-l02",
   "description": "Shared Design-time Entity Framework components for relational data stores.",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
     "keyFile": "../../tools/Key.snk"
   },
   "dependencies": {
-    "EntityFramework.Relational": "7.0.0-rc1-final-l01"
+    "EntityFramework.Relational": "7.0.0-rc1-final-l02"
   },
   "compile": "..\\Shared\\*.cs",
   "namedResource": {

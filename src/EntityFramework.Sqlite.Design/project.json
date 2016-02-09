@@ -1,5 +1,5 @@
 {
-  "version": "7.0.0-rc1-final-l01",
+  "version": "7.0.0-rc1-final-l02",
   "description": "Design-time Entity Framework functionality for SQLite",
   "repository": {
     "type": "git",
@@ -10,8 +10,8 @@
     "keyFile": "../../tools/Key.snk"
   },
   "dependencies": {
-    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l01",
-    "EntityFramework.Sqlite": "7.0.0-rc1-final-l01"
+    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l02",
+    "EntityFramework.Sqlite": "7.0.0-rc1-final-l02"
   },
   "compile": "..\\Shared\\*.cs",
   "frameworks": {

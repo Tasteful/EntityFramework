@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l01",
-    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l01",
-    "EntityFramework.Relational.Design.FunctionalTests": "7.0.0-rc1-final-l01",
+    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l02",
+    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l02",
+    "EntityFramework.Relational.Design.FunctionalTests": "7.0.0-rc1-final-l02",
     "EntityFramework.Sqlite.FunctionalTests": "1.0.0",
-    "EntityFramework.Sqlite.Design": "7.0.0-rc1-final-l01"
+    "EntityFramework.Sqlite.Design": "7.0.0-rc1-final-l02"
   },
   "commands": {
     "test": "xunit.runner.aspnet"

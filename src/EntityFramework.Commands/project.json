@@ -1,5 +1,5 @@
 {
-  "version": "7.0.0-rc1-final-l01",
+  "version": "7.0.0-rc1-final-l02",
   "description": "Command line utilities for Entity Framework.",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "EntityFramework.Commands.CommandsStrings": "Properties/CommandsStrings.resx"
   },
   "dependencies": {
-    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l01"
+    "EntityFramework.Relational.Design": "7.0.0-rc1-final-l02"
   },
   "frameworks": {
     "net451": { },

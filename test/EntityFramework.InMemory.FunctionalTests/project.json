@@ -3,7 +3,7 @@
     "keyFile": "../../tools/Key.snk"
   },
   "dependencies": {
-    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l01"
+    "EntityFramework.Core.FunctionalTests": "7.0.0-rc1-final-l02"
   },
   "commands": {
     "test": "xunit.runner.aspnet"

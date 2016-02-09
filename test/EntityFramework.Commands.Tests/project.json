@@ -7,7 +7,7 @@
     "keyFile": "../../tools/Key.snk"
   },
   "dependencies": {
-    "EntityFramework.Commands": "7.0.0-rc1-final-l01",
+    "EntityFramework.Commands": "7.0.0-rc1-final-l02",
     "EntityFramework.Relational.Tests": "1.0.0"
   },
   "compile": "..\\..\\src\\EntityFramework.Commands\\Design\\OperationHandlers.cs",
