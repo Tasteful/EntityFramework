@@ -335,13 +335,11 @@ namespace Microsoft.Data.Entity.FunctionalTests
         {
             using (var context = CreateContext())
             {
-                var customerId = context.Set<Order>().Select(x=> x.CustomerID).FirstOrDefault();
-
                 var customer
                     = context.Set<Customer>()
                         .Include(c => c.Orders)
-                        .Where(c => c.CustomerID == customerId)
-                        .OrderBy(c => context.Set<Order>().Where(oo => oo.CustomerID == customerId).Select(oo => oo.OrderDate).FirstOrDefault())
+                        .Where(c => c.CustomerID.StartsWith("w"))
+                        .OrderByDescending(c => c.Orders.OrderByDescending(oo => oo.OrderDate).FirstOrDefault())
                         .FirstOrDefault();
 
                 Assert.NotNull(customer);
