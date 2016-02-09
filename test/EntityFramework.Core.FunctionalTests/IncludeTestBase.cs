@@ -331,6 +331,26 @@ namespace Microsoft.Data.Entity.FunctionalTests
         }
 
         [Fact]
+        public virtual void Include_collection_order_by_subquery()
+        {
+            using (var context = CreateContext())
+            {
+                var customerId = context.Set<Order>().Select(x=> x.CustomerID).FirstOrDefault();
+
+                var customer
+                    = context.Set<Customer>()
+                        .Include(c => c.Orders)
+                        .Where(c => c.CustomerID == customerId)
+                        .OrderBy(c => context.Set<Order>().Where(oo => oo.CustomerID == customerId).Select(oo => oo.OrderDate).FirstOrDefault())
+                        .FirstOrDefault();
+
+                Assert.NotNull(customer);
+                Assert.NotNull(customer.Orders);
+                Assert.NotEmpty(customer.Orders);
+            }
+        }
+
+        [Fact]
         public virtual void Include_collection_principal_already_tracked()
         {
             using (var context = CreateContext())
