@@ -8,6 +8,7 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Query.Expressions;
 using Microsoft.Data.Entity.Query.ExpressionVisitors.Internal;
 using Microsoft.Data.Entity.Query.Internal;
+using Microsoft.Data.Entity.Storage;
 using Microsoft.Data.Entity.Utilities;
 using Remotion.Linq.Clauses;
 
@@ -21,6 +22,7 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
         private readonly IMaterializerFactory _materializerFactory;
         private readonly ICommandBuilderFactory _commandBuilderFactory;
         private readonly IRelationalAnnotationProvider _relationalAnnotationProvider;
+        private readonly ISqlGenerator _sqlGenerator;
 
         public RelationalEntityQueryableExpressionVisitorFactory(
             [NotNull] IModel model,
@@ -28,7 +30,8 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
             [NotNull] ISelectExpressionFactory selectExpressionFactory,
             [NotNull] IMaterializerFactory materializerFactory,
             [NotNull] ICommandBuilderFactory commandBuilderFactory,
-            [NotNull] IRelationalAnnotationProvider relationalAnnotationProvider)
+            [NotNull] IRelationalAnnotationProvider relationalAnnotationProvider,
+            [NotNull] ISqlGenerator sqlGenerator)
         {
             Check.NotNull(model, nameof(model));
             Check.NotNull(keyValueFactorySource, nameof(keyValueFactorySource));
@@ -36,6 +39,7 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
             Check.NotNull(materializerFactory, nameof(materializerFactory));
             Check.NotNull(commandBuilderFactory, nameof(commandBuilderFactory));
             Check.NotNull(relationalAnnotationProvider, nameof(relationalAnnotationProvider));
+            Check.NotNull(sqlGenerator, nameof(sqlGenerator));
 
             _model = model;
             _keyValueFactorySource = keyValueFactorySource;
@@ -43,6 +47,7 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
             _materializerFactory = materializerFactory;
             _commandBuilderFactory = commandBuilderFactory;
             _relationalAnnotationProvider = relationalAnnotationProvider;
+            _sqlGenerator = sqlGenerator;
         }
 
         public virtual ExpressionVisitor Create(
@@ -55,6 +60,7 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
                 _commandBuilderFactory,
                 _relationalAnnotationProvider,
                 (RelationalQueryModelVisitor)Check.NotNull(queryModelVisitor, nameof(queryModelVisitor)),
-                querySource);
+                querySource,
+                _sqlGenerator);
     }
 }

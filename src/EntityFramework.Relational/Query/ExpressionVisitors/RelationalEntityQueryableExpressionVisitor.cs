@@ -35,16 +35,9 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
         private readonly ICommandBuilderFactory _commandBuilderFactory;
         private readonly IRelationalAnnotationProvider _relationalAnnotationProvider;
         private readonly IQuerySource _querySource;
+        private readonly ISqlGenerator _sqlGenerator;
 
-        public RelationalEntityQueryableExpressionVisitor(
-            [NotNull] IModel model,
-            [NotNull] IKeyValueFactorySource keyValueFactorySource,
-            [NotNull] ISelectExpressionFactory selectExpressionFactory,
-            [NotNull] IMaterializerFactory materializerFactory,
-            [NotNull] ICommandBuilderFactory commandBuilderFactory,
-            [NotNull] IRelationalAnnotationProvider relationalAnnotationProvider,
-            [NotNull] RelationalQueryModelVisitor queryModelVisitor,
-            [CanBeNull] IQuerySource querySource)
+        public RelationalEntityQueryableExpressionVisitor([NotNull] IModel model, [NotNull] IKeyValueFactorySource keyValueFactorySource, [NotNull] ISelectExpressionFactory selectExpressionFactory, [NotNull] IMaterializerFactory materializerFactory, [NotNull] ICommandBuilderFactory commandBuilderFactory, [NotNull] IRelationalAnnotationProvider relationalAnnotationProvider, [NotNull] RelationalQueryModelVisitor queryModelVisitor, [CanBeNull] IQuerySource querySource, [NotNull]ISqlGenerator sqlGenerator)
             : base(Check.NotNull(queryModelVisitor, nameof(queryModelVisitor)))
         {
             Check.NotNull(model, nameof(model));
@@ -53,6 +46,7 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
             Check.NotNull(materializerFactory, nameof(materializerFactory));
             Check.NotNull(commandBuilderFactory, nameof(commandBuilderFactory));
             Check.NotNull(relationalAnnotationProvider, nameof(relationalAnnotationProvider));
+            Check.NotNull(sqlGenerator, nameof(sqlGenerator));
 
             _model = model;
             _keyValueFactorySource = keyValueFactorySource;
@@ -61,6 +55,7 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
             _commandBuilderFactory = commandBuilderFactory;
             _relationalAnnotationProvider = relationalAnnotationProvider;
             _querySource = querySource;
+            _sqlGenerator = sqlGenerator;
         }
 
         private new RelationalQueryModelVisitor QueryModelVisitor => (RelationalQueryModelVisitor)base.QueryModelVisitor;
@@ -126,9 +121,9 @@ namespace Microsoft.Data.Entity.Query.ExpressionVisitors
             var name = _relationalAnnotationProvider.For(entityType).TableName;
 
             var tableAlias
-                = _querySource.HasGeneratedItemName()
+                = _sqlGenerator.GenerateAlias(_querySource.HasGeneratedItemName()
                     ? name[0].ToString().ToLowerInvariant()
-                    : _querySource.ItemName;
+                    : _querySource.ItemName);
 
             var fromSqlAnnotation
                 = relationalQueryCompilationContext

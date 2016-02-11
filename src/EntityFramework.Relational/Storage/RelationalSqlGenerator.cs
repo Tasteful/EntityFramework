@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -13,6 +14,7 @@ namespace Microsoft.Data.Entity.Storage
 {
     public class RelationalSqlGenerator : ISqlGenerator
     {
+        private readonly ConcurrentDictionary<string, int> _aliases = new ConcurrentDictionary<string, int>(StringComparer.OrdinalIgnoreCase);
         protected virtual string FloatingPointFormat => "{0}E0";
         protected virtual string DateTimeFormat => @"yyyy-MM-dd HH\:mm\:ss.fffffff";
         protected virtual string DateTimeOffsetFormat => @"yyyy-MM-dd HH\:mm\:ss.fffffffzzz";
@@ -54,6 +56,12 @@ namespace Microsoft.Data.Entity.Storage
                     ? DelimitIdentifier(schema) + "."
                     : string.Empty)
                 + DelimitIdentifier(Check.NotEmpty(name, nameof(name)));
+
+        public virtual string GenerateAlias(string alias)
+        {
+            var aliasIndex = _aliases.AddOrUpdate(alias, 0, (s, c) => c+1);
+            return $"{alias}__{aliasIndex}";
+        }
 
         protected virtual string GenerateLiteralValue(int value)
             => value.ToString();

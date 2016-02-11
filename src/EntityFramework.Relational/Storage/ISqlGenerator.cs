@@ -22,5 +22,7 @@ namespace Microsoft.Data.Entity.Storage
         string DelimitIdentifier([NotNull] string identifier);
 
         string DelimitIdentifier([NotNull] string name, [CanBeNull] string schema);
+
+        string GenerateAlias([NotNull]string alias);
     }
 }
