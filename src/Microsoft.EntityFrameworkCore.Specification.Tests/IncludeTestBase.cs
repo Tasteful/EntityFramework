@@ -470,6 +470,26 @@ namespace Microsoft.EntityFrameworkCore.Specification.Tests
                 Assert.NotEmpty(customer.Orders);
             }
         }
+        [Fact]
+        public virtual void Then_include_collection_order_by_collection_column()
+        {
+            using (var context = CreateContext())
+            {
+                var customer
+                    = context.Set<Customer>()
+                        .Include(c => c.Orders)
+                        .ThenInclude(o => o.OrderDetails)
+                        .Where(c => c.CustomerID.StartsWith("W"))
+                        .OrderByDescending(c => c.Orders.OrderByDescending(oo => oo.OrderDate).FirstOrDefault().OrderDate)
+                        .FirstOrDefault();
+
+                Assert.NotNull(customer);
+                Assert.NotNull(customer.Orders);
+                Assert.NotEmpty(customer.Orders);
+                Assert.NotNull(customer.Orders.First().OrderDetails);
+                Assert.NotEmpty(customer.Orders.First().OrderDetails);
+            }
+        }
 
         [Fact]
         public virtual void Include_collection_order_by_key()
