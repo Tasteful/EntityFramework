@@ -232,7 +232,7 @@ INNER JOIN (
     WHERE [c].[CustomerID] LIKE N'W' + N'%'
     ORDER BY [c0_0] DESC, [c].[CustomerID]
 ) AS [c0] ON [o].[CustomerID] = [c0].[CustomerID]
-ORDER BY [c0_0] DESC, [c0].[CustomerID]",
+ORDER BY [c0].[c0_0] DESC, [c0].[CustomerID]",
                 Sql);
         }
 
@@ -377,7 +377,7 @@ INNER JOIN (
     WHERE [c].[CustomerID] = N'ALFKI'
     ORDER BY [c0_0], [c].[CustomerID]
 ) AS [c0] ON [o].[CustomerID] = [c0].[CustomerID]
-ORDER BY [c0_0], [c0].[CustomerID]", 
+ORDER BY [c0].[c0_0], [c0].[CustomerID]", 
                 Sql);
         }
 
