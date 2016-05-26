@@ -80,5 +80,8 @@
   "packInclude": {
     "build/": "build/**",
     "tools/": "tools/**"
-  }
+  },
+  "runtimes": {
+    "win7-x64": { }
+ }
 }
