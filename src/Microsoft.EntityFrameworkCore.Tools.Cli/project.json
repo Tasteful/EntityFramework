@@ -14,7 +14,7 @@
     }
   },
   "dependencies": {
-    "Microsoft.DotNet.Cli.Utils": "1.0.0-*",
+    "Microsoft.DotNet.Cli.Utils": "1.0.0-preview1-002702",
     "Microsoft.DotNet.ProjectModel": "1.0.0-*",
     "Microsoft.Extensions.CommandLineUtils": "1.0.0-*",
     "Microsoft.Extensions.DotnetToolDispatcher.Sources": {
