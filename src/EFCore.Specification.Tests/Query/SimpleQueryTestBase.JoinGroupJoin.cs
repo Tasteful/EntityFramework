@@ -800,5 +800,21 @@ namespace Microsoft.EntityFrameworkCore.Query
                     select grouping.Count(),
                 assertOrder: true);
         }
+
+        [ConditionalFact]
+        public virtual void Range_variable_subquery_with_FirstOrDefault_is_deduplicated()
+        {
+            AssertQuery<Order, OrderDetail>(
+                (os, ods) =>
+                    from o in os
+                    let d = ods.OrderByDescending(x => x.ProductID).FirstOrDefault(x => x.OrderID == o.OrderID)
+                    select new
+                    {
+                        o.OrderID,
+                        d.ProductID,
+                        d.Quantity,
+                        d.UnitPrice
+                    });
+        }
     }
 }

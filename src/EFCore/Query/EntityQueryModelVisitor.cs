@@ -273,6 +273,8 @@ namespace Microsoft.EntityFrameworkCore.Query
 
             new NondeterministicResultCheckingVisitor(QueryCompilationContext.Logger).VisitQueryModel(queryModel);
 
+            new SubQueryDeduplicatingQueryModelVisitor().VisitQueryModel(queryModel);
+
             // Rewrite includes/navigations
 
             RewriteProjectedCollectionNavigationsToIncludes(queryModel);
