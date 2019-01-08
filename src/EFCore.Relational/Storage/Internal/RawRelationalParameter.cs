@@ -3,6 +3,8 @@
 
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.SqlClient;
+using System.Reflection;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore.Utilities;
 
@@ -14,6 +16,9 @@ namespace Microsoft.EntityFrameworkCore.Storage.Internal
     /// </summary>
     public class RawRelationalParameter : RelationalParameterBase
     {
+        private static readonly FieldInfo _parentFieldInfo = typeof(SqlParameter)
+            .GetField("_parent", BindingFlags.Instance | BindingFlags.NonPublic);
+
         private readonly DbParameter _parameter;
 
         /// <summary>
@@ -52,6 +57,13 @@ namespace Microsoft.EntityFrameworkCore.Storage.Internal
         /// </summary>
         public override void AddDbParameter(DbCommand command, object value)
         {
+            if (value is SqlParameter
+                   && !(_parentFieldInfo?.GetValue(value) is null))
+            {
+                command.Parameters.Add((DbParameter)((ICloneable)value).Clone());
+                return;
+            }
+
             command.Parameters.Add(value);
         }
     }

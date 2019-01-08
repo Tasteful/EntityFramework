@@ -3,6 +3,8 @@
 
 using System;
 using System.Data.Common;
+using System.Data.SqlClient;
+using System.Reflection;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore.Utilities;
 
@@ -14,6 +16,9 @@ namespace Microsoft.EntityFrameworkCore.Storage.Internal
     /// </summary>
     public class DynamicRelationalParameter : RelationalParameterBase
     {
+        private static readonly FieldInfo _parentFieldInfo = typeof(SqlParameter)
+                    .GetField("_parent", BindingFlags.Instance | BindingFlags.NonPublic);
+
         private readonly IRelationalTypeMappingSource _typeMappingSource;
 
         /// <summary>
@@ -59,6 +64,14 @@ namespace Microsoft.EntityFrameworkCore.Storage.Internal
                 command.Parameters
                     .Add(_typeMappingSource.GetMappingForValue(null)
                             .CreateParameter(command, Name, null));
+
+                return;
+            }
+
+            if (value is SqlParameter
+                   && !(_parentFieldInfo?.GetValue(value) is null))
+            {
+                command.Parameters.Add((DbParameter)((ICloneable)value).Clone());
 
                 return;
             }
